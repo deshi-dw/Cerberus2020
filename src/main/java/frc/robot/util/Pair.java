@@ -5,8 +5,8 @@ public class Pair<KT, VT> {
 	private VT value;
 
 	public Pair(KT key, VT value) {
-		this.value = value;
 		this.key = key;
+		this.value = value;
 	}
 
 	public KT getKey() {
