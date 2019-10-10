@@ -7,7 +7,10 @@
 
 package frc.robot;
 
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.communication.RobotServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,16 +20,46 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * project.
  */
 public class Robot extends TimedRobot {
+
+	private RobotServer server;
+	private Thread serverThread;
+
 	/**
 	 * This function is run when the robot is first started up and should be used
 	 * for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
+		System.out.println("Robot has been initialized.");
+
+		server = new RobotServer("127.0.0.1", 300);
+
+		try {
+			server.connect();
+		} catch (Exception e) {
+		}
+
+		serverThread = new Thread(server);
+		serverThread.start();
+
+		while (server.isReadReady() == false) {}
+
+		try {
+			System.out.println(server.read());
+			server.write("*Some random server data.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public void robotPeriodic() {
 	}
 
 	@Override
 	public void autonomousInit() {
+		System.out.println("Autonomous code has been initialized.");
 	}
 
 	@Override
@@ -35,6 +68,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		System.out.println("Teleop code has been initialized.");
 	}
 
 	@Override
@@ -43,10 +77,19 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void testInit() {
+		System.out.println("Test code has been initialized.");
 	}
 
 	@Override
 	public void testPeriodic() {
+	}
+
+	@Override
+	public void disabledInit() {
+	}
+
+	@Override
+	public void disabledPeriodic() {
 	}
 
 }
