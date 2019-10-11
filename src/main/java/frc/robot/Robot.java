@@ -33,23 +33,13 @@ public class Robot extends TimedRobot {
 		System.out.println("Robot has been initialized.");
 
 		server = new RobotServer("127.0.0.1", 300);
+		server.connect();
 
-		try {
-			server.connect();
-		} catch (Exception e) {
-		}
+		// serverThread = new Thread(server);
+		// serverThread.start();
 
-		serverThread = new Thread(server);
-		serverThread.start();
-
-		while (server.isReadReady() == false) {}
-
-		try {
-			System.out.println(server.read());
-			server.write("*Some random server data.");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.println(server.read());
+		server.write("*Some random server data.");
 
 	}
 

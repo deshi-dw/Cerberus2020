@@ -5,13 +5,18 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RobotServer implements Runnable {
-	ServerSocket server;
-	Socket client;
+	private ServerSocket server;
+	private Socket client;
 
 	private String ip = "127.0.0.1";
 	private int port = 3600;
@@ -21,30 +26,42 @@ public class RobotServer implements Runnable {
 	private String clientIp;
 
 	private BufferedReader input;
-	private BufferedWriter output;
+	private PrintWriter output;
+
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 
 	public RobotServer(String ip, int port) {
 		this.ip = ip;
 		this.port = port;
 	}
 
-	// FIXME: connecting to the server should be multithreaded in order to not stall the application.
-	public void connect() throws Exception {
+	// FIXME: connecting to the server should be multithreaded in order to not stall
+	// the application.
+	public void connect() {
 		// Create a server and wait for a client to connect.
-		server = new ServerSocket(port, 1, InetAddress.getByName(ip));
-		System.out.println("Listening for data...");
+		try {
+			server = new ServerSocket(port, 1, InetAddress.getByName(ip));
 
-		client = server.accept();
+			System.out.println("Looking for client to connect to...");
+			client = server.accept();
 
-		// When the client connects, get the client ip and set isConnected to true.
-		clientIp = client.getInetAddress().getHostAddress();
-		isConnected = true;
+			// When the client connects, get the client ip and set isConnected to true.
+			clientIp = client.getInetAddress().getHostAddress();
+			isConnected = true;
 
-		System.out.println("Connected to client " + clientIp);
+			System.out.println("Connected to client " + clientIp);
 
-		// Create an input stream from the client.
-		input = new BufferedReader(new InputStreamReader(client.getInputStream()));
-		output = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+			// Create an input stream from the client.
+			input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			output = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
+
+			System.out.println("Listening for data...");
+			
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// FIXME: run doesn't need to exist.
@@ -52,41 +69,47 @@ public class RobotServer implements Runnable {
 	public void run() {
 		while (isConnected) {
 			if (client.isClosed() == true || server.isClosed()) {
-				try {
-					disconnect();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				disconnect();
 			}
 		}
 	}
 
-	public void disconnect() throws IOException {
+	public void disconnect() {
 		isConnected = false;
-		input.close();
-		output.close();
+		try {
+			input.close();
+			output.close();
 
-		server.close();
-		client.close();
+			server.close();
+			client.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public String read() throws IOException {
-		while(input.ready() == false) {}
+	public String read() {
+		System.out.println("[" + dateTimeFormatter.format(LocalDateTime.now()) + "] Reading next line.");
+		String data;
+		try {
+			data = input.readLine();
+			System.out.println("[" + dateTimeFormatter.format(LocalDateTime.now()) + "] Reading: " + data);
+			return data;
 
-		System.out.println("Reading next line...");
-		String data = input.readLine();
-		System.out.println("---Next has been read.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		return data;
+		return null;
 	}
 
-	public void write(String data) throws IOException {
-		System.out.println("Writing " + data + " to client...");
-		output.write(data);
-		System.out.println("---" + data + " has been written to the client.");
+	public void write(String data) {
+		output.write(data + '\n');
+		output.flush();
+		System.out.println("[" + dateTimeFormatter.format(LocalDateTime.now()) + "] Writing: " + data);
 	}
 
-	public boolean isReadReady() {
+	public boolean isinputReady() {
 		try {
 			return input.ready();
 		} catch (IOException e) {
