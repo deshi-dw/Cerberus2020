@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.components.controllers;
 
 import frc.robot.settings.Settings;
 

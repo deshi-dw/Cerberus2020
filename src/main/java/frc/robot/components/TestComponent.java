@@ -1,7 +1,7 @@
 package frc.robot.components;
 
-import frc.robot.ComponentInfo;
-import frc.robot.IComponent;
+import frc.robot.components.ComponentInfo;
+import frc.robot.components.IComponent;
 import frc.robot.util.Pair;
 
 public class TestComponent implements IComponent {

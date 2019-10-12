@@ -1,6 +1,6 @@
-package frc.robot.controllers;
+package frc.robot.components.controllers;
 
-import frc.robot.IController;
+import frc.robot.components.controllers.IController;
 import frc.robot.components.TestComponent;
 import frc.robot.settings.Settings;
 

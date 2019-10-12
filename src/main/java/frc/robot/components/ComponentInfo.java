@@ -1,5 +1,5 @@
 
-package frc.robot;
+package frc.robot.components;
 
 import java.util.HashMap;
 import java.util.Map;

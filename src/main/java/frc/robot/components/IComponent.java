@@ -1,6 +1,6 @@
-package frc.robot;
+package frc.robot.components;
 
-import frc.robot.ComponentInfo;
+import frc.robot.components.ComponentInfo;
 
 public interface IComponent {
 	public boolean enabled = false;
