@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Programming Help</title></head>
+<body><p>&nbsp;</p>
+<h1>Programming Help</h1>
+<div>[TOC]</div>
+<p>&nbsp;</p>
+<h2>1. Getting Started</h2>
+<p>This is a quick startup guide on basic programming. It will hopefully cover the basic knowledge needed to get started programming. <strong>The guide will not cover the structure and rules that are used in our robot code.</strong> To see more about our specific code, see the [INSERT ROBOT CODE GUIDE].</p>
+<h3>1.1 Definitions</h3>
+<p>TODO: Definitions are not helpful if a. they cannot be linked to and b. if there isn’t one for all the computer-y words. Think about removing this section / integrating it into other parts.</p>
+<p>It is good to know at least a few words that are used in programming so when looking up answers, you know what the answers are referring to. Feel free to skip this bit if you think you already know most of the definitions.</p>
+<p>&nbsp;</p>
+<p><strong>Programming Language:</strong> A language that the computer can understand. Think of it as English vs French vs Japanese. Each language is used to tell the computer instructions but the way they achieve this can be quite different.</p>
+<p>Example:</p>
+<p>Java - HelloWorld.java</p>
+<pre><code class='language-java' lang='java'>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello world!&quot;);
+    }
+}
+</code></pre>
+<p>Python - HelloWorld.py</p>
+<pre><code class='language-python' lang='python'>print &quot;Hello, World!&quot;
+</code></pre>
+<p>As shown, there is quite a big difference between each implementation but they both do the same thing in the end. If you want to see a whole bunch of example in many different languages, look no further then <a href='http://rosettacode.org/wiki/Rosetta_Code'>Rosetta Code</a>. It’s a website dedicated to showing <em>“solutions to the same task in as many different languages as possible.“</em></p>
+<p>&nbsp;</p>
+<p><strong>Compile:</strong> This means converting the programming language into instructions that the computer can understand. This is usually <a href='#Binary'>binary code</a>, also referred to as machine code. Something called a compiler takes the programming language code and turns it into ones and zeros (binary).</p>
+<p>Example:</p>
+<p><strong>c code:</strong></p>
+<pre><code class='language-c' lang='c'>int main(int argc, char *argv[]) {
+	printf(&quot;Hello World&quot;);
+}
+</code></pre>
+<p><strong>assembly code:</strong></p>
+<pre><code>(gdb) disas main
+Dump of assembler code for function main:
+   0x00401410 &lt;+0&gt;:     push   %ebp
+   0x00401411 &lt;+1&gt;:     mov    %esp,%ebp
+   0x00401413 &lt;+3&gt;:     and    $0xfffffff0,%esp
+   0x00401416 &lt;+6&gt;:     sub    $0x10,%esp
+   0x00401419 &lt;+9&gt;:     call   0x401950 &lt;__main&gt;
+   0x0040141e &lt;+14&gt;:    movl   $0x405044,(%esp)
+   0x00401425 &lt;+21&gt;:    call   0x403a90 &lt;printf&gt;
+   0x0040142a &lt;+26&gt;:    mov    $0x0,%eax
+   0x0040142f &lt;+31&gt;:    leave
+   0x00401430 &lt;+32&gt;:    ret
+   0x00401431 &lt;+33&gt;:    nop
+   0x00401432 &lt;+34&gt;:    nop
+   0x00401433 &lt;+35&gt;:    nop
+   0x00401434 &lt;+36&gt;:    xchg   %ax,%ax
+   0x00401436 &lt;+38&gt;:    xchg   %ax,%ax
+   0x00401438 &lt;+40&gt;:    xchg   %ax,%ax
+   0x0040143a &lt;+42&gt;:    xchg   %ax,%ax
+   0x0040143c &lt;+44&gt;:    xchg   %ax,%ax
+   0x0040143e &lt;+46&gt;:    xchg   %ax,%ax
+End of assembler dump.
+</code></pre>
+<p>This is an example of decompiled c calls. Don’t worry about understanding what the above code does. Just know that the top c code get’s <strong>compiled</strong> into more unreadable machine code.</p>
+<p>Note that assembly code (shown above) and machine code (ones and zeros) are not the same. This is just to show how compiling code changes.</p>
+<p>&nbsp;</p>
+<p><strong>Binary:</strong> Binary is data represented in a way the computer can understand. This is represented in ones and zeros. Another way of thinking about this is switches. One is switched on and zero is switched off.</p>
+<p>&nbsp;</p>
+<p><strong>Syntax:</strong> The rules of structuring words and symbols in ways that the computer can read. Think of syntax as programming’s version of periods, commas and other punctuation.</p>
+<p><strong>Static:</strong> Static in programming usually means there is only one of it or it doesn’t change.</p>
+<p><strong>Dynamic:</strong> Dynamic means constantly changing or it can be two or more different types depending on the situation.</p>
+<p><strong>Portable:</strong> Portable means that the program can be run on many different <a href='#Operating System'>operating systems</a></p>
+<p><strong>Operating System:</strong> An operating system or OS is the core functionality of a computer such as file management, program execution and communicating with hardware. The most common operating systems are Windows, Unix (Mac book OS), and Ubuntu/Linux kernel.</p>
+<p>&nbsp;</p>
+<h3>1.2 What is Java</h3>
+<p>The language we use to code the robot is <a href='https://en.wikipedia.org/wiki/Java_%28programming_language%29'>Java</a>. Java is a c-based language meaning the <a href='#syntax'>syntax</a> for it is almost identical to other c-based languages like <a href='https://en.wikipedia.org/wiki/C_%28programming_language%29'>c</a>, <a href='https://en.wikipedia.org/wiki/C%2B%2B'>c++</a>, <a href='https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29'>c#</a>, <a href='https://en.wikipedia.org/wiki/List_of_C-family_programming_languages'>etc</a>. This makes knowledge from on of these languages fairly transferable.</p>
+<p>Java <a href='#Compile'>compiles</a> to what’s called <a href='https://en.wikipedia.org/wiki/Java_bytecode'>java bytecode</a>. This is an intermediate between the java programming language and pure binary. This is how java is so <a href='#Portable'>portable</a>. The code only needs to be written once and can then be compiled to java bytecode and run on any system that has java installed.</p>
+<p>&nbsp;</p>
+<h3>1.3 Installing Java</h3>
+<p>Since java does compile to java bytecode, something needs to run that bytecode and because it isn’t machine code, the computer cannot run it without help. This is where the Java Runtime Environment (JRE) comes into play. It is the JRE that executes java bytecode and is something that needs to be installed on any computer that wants to run java. On top of that, if developing a java application, the Java Development Kit (JDK) needs to be installed.</p>
+<p><em>Note that the JDK includes the JRE meaning that only the JDK needs to be installed since the goal is to develop and run java code.</em></p>
+<p>First, check that the JDK isn’t already installed. To do this, go to</p>
+<div style="text-align: center; background-color: rgb(244,244,244);"><code>C:\Program Files\Java</code></div>
+<p>And look at the folders contents. There might already be some folders as such. (Not all of them are needed. Just one that starts with ‘jdk’.)</p>
+<p><img src="assets/1.3_installing_java_1.png" referrerpolicy="no-referrer"></p>
+<p>If there are no folders or <code>C:\Program Files\Java</code> does not exist, go to the following page to download and run the installer.</p>
+<p><a href='https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.4%2B11/OpenJDK11U-jdk_x64_windows_hotspot_11.0.4_11.msi' target='_blank' class='url'>https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.4%2B11/OpenJDK11U-jdk_x64_windows_hotspot_11.0.4_11.msi</a></p>
+<p>Continue through with the installer until this point:</p>
+<p><span style="color: transparent;">.</span><img src="assets/1.3_installing_java_2.png" referrerpolicy="no-referrer" alt="1.3_installing_java_2"></p>
+<p>Select the <code>Set JAVA_HOME variable</code>  to  <code>Will be installed on local hardrive</code> as such:</p>
+<p><span style="color: transparent;">.</span><img src="assets/1.3_installing_java_3.png" referrerpolicy="no-referrer" alt="1.3_installing_java_3"></p>
+<p>Once that has been set, click next and install where administrative privileges will be needed. Now by opening a command terminal (cmd.exe / powershell.exe) and run <code>java -version</code> and <code>javac -version</code> to make sure everything is installed properly.</p>
+<p><img src="assets/1.3_installing_java_4.png" referrerpolicy="no-referrer" alt="1.3_installing_java_4"> </p>
+<pre><code class='language-powershell' lang='powershell'>Microsoft Windows [Version 10.0.17763.775]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32&gt;java -version
+java version &quot;1.8.0_221&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+Java HotSpot(TM) Client VM (build 25.221-b11, mixed mode, sharing)
+
+C:\WINDOWS\system32&gt;javac -version
+javac 1.8.0_181
+</code></pre>
+<p>&nbsp;</p>
+<p><img src="assets/1.3_installing_java_5.png" referrerpolicy="no-referrer" alt="1.3_installing_java_5"> </p>
+<pre><code class='language-powershell' lang='powershell'>Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\system32&gt; java -version
+java version &quot;1.8.0_221&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+Java HotSpot(TM) Client VM (build 25.221-b11, mixed mode)
+
+PS C:\WINDOWS\system32&gt; javac -version
+javac 1.8.0_181
+</code></pre>
+<p>&nbsp;</p>
+<p>The <code>java version</code> and <code>javac</code> version should be whatever version that was installed. As long as a versions pops up, everything should be setup correctly.</p>
+<p>&nbsp;</p>
+<h3>1.4 Install VSCode</h3>
+<p>Once the JDK is installed a program can be created and compiled without anything else but <code>notepad.exe</code>. This would however be pretty slow and painful as <code>notepad.exe</code> isn’t designed to write java code with. </p>
+<p>Instead, an <a href='https://en.wikipedia.org/wiki/Integrated_development_environment'>Integrated Development Environment (IDE)</a> is used. This is an application specially made for writing code in a specific language. An example of this would be <a href='https://www.eclipse.org/'>Eclipse</a> which is specially made for java development. The new official IDE for the competition however is <a href='https://code.visualstudio.com/'>VSCode</a>. </p>
+<p>VSCode is more modular in design making it good for developing for all kinds of languages. The downside is that each language requires more setup then an IDE made for a single language.</p>
+<p>Download: <a href='https://code.visualstudio.com/docs/?dv=win64' target='_blank' class='url'>https://code.visualstudio.com/docs/?dv=win64</a></p>
+<p>To download VSCode, follow the link above and run the installer. This will require administrative permission on the computer.</p>
+<p>Once installed, simply open it and the layout should look something like this:</p>
+<p><img src="assets/1.4_installing_vscode_1.png" referrerpolicy="no-referrer" alt="1.4_installing_vscode_1"></p>
+<p>To install what is needed, go over to the right and click on the cube of blocks.</p>
+<p><img src="assets/1.4_installing_vscode_2.png" referrerpolicy="no-referrer" alt="1.4_installing_vscode_2"></p>
+<p>In the top search bar titled <code>Search Extensions in Marketplace</code> type in java and find the <code>Language Support for Java(TM) by Red Hat</code> and click install.</p>
+<p><img src="assets/1.4_installing_vscode_3.png" referrerpolicy="no-referrer" alt="1.4_installing_vscode_3"></p>
+<p>Once installed, VSCode should be ready to use with the JDK.</p>
+<p>&nbsp;</p>
+<h3>1.5 Using VSCode</h3>
+<p>VSCode is capable of a lot and can get pretty complicated. This will only run over the basics but more advanced things can be found starting <a href='https://code.visualstudio.com/docs/getstarted/userinterface'>here</a> as well as other places on the web.</p>
+<p>First, to open a folder go to <code>File&gt;Open Folder</code>. This will open the folder in the side bar as well as create a new <code>workspace</code> to work in. If it asked to save the current workspace, decline.</p>
+<p><img src="assets/1.5_using_vscode_1.png" referrerpolicy="no-referrer" alt="1.5_using_vscode_1"></p>
+<p>For now it doesn’t really matter what folder is opened so just create a new folder called whatever and open that. It should look more or less like this when opened.</p>
+<p><img src="assets/1.5_using_vscode_2.png" referrerpolicy="no-referrer" alt="1.5_using_vscode_2"></p>
+<p>Notice that the file icon is selected on the left side. The window is currently in the <code>Explorer tab</code>. To switch tabs, click the various buttons on the right.</p>
+<p>&nbsp;</p>
+<p>The <code>Explorer</code> tab is essentially a file viewer and is used to manage all the files in a project.</p>
+<p><img src="assets/1.5_using_vscode_3.png" referrerpolicy="no-referrer" alt="1.5_using_vscode_3"> </p>
+<p>Anything that is in the section <code>OPEN EDITORS</code> is currently in the top tab.</p>
+<p><img src="assets/1.5_using_vscode_4.png" referrerpolicy="no-referrer" alt="1.5_using_vscode_4"></p>
+<p>&nbsp;</p>
+<p>To open the <code>Command Line</code>, there are two options.</p>
+<p>One is to hover near the bottom of the screen and drag up.</p>
+<p><img src="assets/1.5_using_vscode_5.gif" referrerpolicy="no-referrer" alt="1.5_using_vscode_5"></p>
+<p>The other option is to press <code>ctrl+`</code>.</p>
+<p><img src="assets/1.5_using_vscode_6.png" referrerpolicy="no-referrer" alt="1.5_using_vscode_6"></p>
+<p>&nbsp;</p>
+<p>Again, to learn more about the editor it would be best to lookup the official VSCode site and other resources.</p>
+<h2>2. Creating an Application</h2>
+<p>A java application has 4 main parts to it.</p>
+<p><strong>code (src)</strong> - The program and all of it’s logic</p>
+<p><strong>libraries (libs)</strong> - External code brought in to aid in creating the program.</p>
+<p><strong>bytecode (bin)</strong> - A compiled version of the code.</p>
+<p><strong>build</strong> - The bundled up version of bytecode that can be run using a single jar.</p>
+<p>&nbsp;</p>
+<p>The file structure can look something like so:</p>
+<p><img src="assets/2.0_creating_an_application_1.png" referrerpolicy="no-referrer" alt="2_creating_an_application_1"> </p>
+<p>&nbsp;</p>
+<p>A folder can be created by right clicking in the project tab and selecting <code>New Folder</code>:</p>
+<p><img src="assets/2.0_creating_an_application_2.png" referrerpolicy="no-referrer" alt="2_creating_an_application_2"> </p>
+<p>&nbsp;</p>
+<p>The <code>.classpath</code> folder is important as it helps the VSCode <a href='https://code.visualstudio.com/docs/editor/intellisense'>intellisense</a> with external libraries. Right now, it’s just setting output and code paths.</p>
+<p><code>.classpath</code></p>
+<pre><code class='language-xml' lang='xml'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;classpath&gt;
+	&lt;classpathentry kind=&quot;src&quot; path=&quot;src&quot;/&gt;
+	&lt;classpathentry kind=&quot;output&quot; path=&quot;bin&quot;/&gt;
+&lt;/classpath&gt;
+</code></pre>
+<p>&nbsp;</p>
+<h3>2.1 Packages</h3>
+<p>packages are pretty much exactly as told: a package. They take a bunch of similar code and bunch it together. This can be used to create a <a href='https://en.wikipedia.org/wiki/Library_%28computing%29'>library</a> or just for organization. In java, folders within the <code>src</code> folder are packages.</p>
+<p><img src="assets/2.1_packages_1.png" referrerpolicy="no-referrer" alt="2.1_packages_1"> </p>
+<p>In this case, the <code>Application.java</code> is within the package <code>cerberus5725.whatever</code>. Folders are separated by periods (.) meaning the full path of of <code>Application.java</code> would be <code>cerberus5725.whatever.Application</code>.</p>
+<h3>2.2 Java Code</h3>
+<p>Java code is stored in <code>.java</code> files. <code>Application.java</code> is an example of java code.</p>
+<p><code>Application.java</code></p>
+<pre><code class='language-java' lang='java'>package cerberus5725.whatever;
+
+public final class Application {
+	public static void main(String[] args) {
+		System.out.println(&quot;Hello World!&quot;);
+	}
+}
+</code></pre>
+<p>&nbsp;</p>
+<p>Note that understanding this code isn’t necessary yet. Just know that java code is stored in <code>.java</code> files which are stored in folders called packages.</p>
+<p>&nbsp;</p>
+<h3>2.3 Compiling</h3>
+<p>Compiling code is the act of turning the code from human readable to computer readable. To do this in java requires the JDK, or more specifically, <code>javac.exe</code>.</p>
+<p>Opening up a command terminal such as <code>cmd.exe</code> or <code>powershell.exe</code> and typing <code>javac -version</code> should display the version of <code>javac.exe</code>. If an error appears instead, refer to <a href='#13-installing-java'>1.3 Installing Java</a>.</p>
+<p>To compile <code>Application.java</code> use <code>javac</code> type the following in the VSCode command line:</p>
+<pre><code class='language-powershell' lang='powershell'>javac -d &quot;bin&quot; &quot;src/cerberus5725/whatever/Application.java&quot;
+</code></pre>
+<p><code>-d</code> followed by <code>“bin”</code> tells the compiler to put the compiled java code into the <code>bin</code> folder.</p>
+<p><code>&quot;src/cerberus5725/whatever/Application.java&quot;</code> tells the compiler what to compile. In this case it is <code>Application.java</code> stored in the folders <code>src/cerberus5725/whatever</code>.</p>
+<p>&nbsp;</p>
+<p>Looking in the <code>bin</code> folder now reveals what the compiler did.</p>
+<p><img src="assets/2.3_compiling_1.png" referrerpolicy="no-referrer" alt="2.3_compiling_1"> </p>
+<p>It created the same folder structure as in <code>src</code> but instead of <code>Application.java</code> there is a <code>Application.class</code> file. This file is java bytecode. As an example, if opened with something that can read class files, it looks something like this.</p>
+<p><img src="assets/2.3_compiling_2.png" referrerpolicy="no-referrer" alt="2.3_compiling_2"> </p>
+<p>&nbsp;</p>
+<p>Java can actually run this bytecode right now using the following command:</p>
+<pre><code class='language-powershell' lang='powershell'>java -cp &quot;bin&quot; &quot;cerberus5725.whatever.Application&quot;
+</code></pre>
+<p><code>-cp</code> is short for <code>classpath</code> which is telling <code>java.exe</code> where the code is located. In this case it is in the <code>bin</code> folder. Note that the package folders like <code>cerberus5725</code> and <code>whatever</code> are not included in <code>-cp</code>.</p>
+<p>Next is <code>cerberus5725.whatever.Application</code>. This is simply calling the location of <code>Application.class</code>. Remember back to <a href='#21-packages'>2.1 Packages</a>.</p>
+<p>Finally the output is “Hello World!” which is what it is set to print meaning it worked.</p>
+<p>&nbsp;</p>
+<h3>2.4 Packing</h3>
+<p>Being able to compile run the code is nice but to make an application that can be run from a click, there is an easier way.</p>
+<p>The packing of java applications are usually done through <code>.jar</code> files. These files have <a href='https://en.wikipedia.org/wiki/Zip_(file_format)'>zip</a> compression and are used to store all the classes and assets for a program. The example program only has one class so packing it isn’t really necessary but still good practice.</p>
+<p>The JDK comes with a <code>jar.exe</code> that is used to pack java applications. There are two ways to create a jar.</p>
+<p>The first is a simple one line command.</p>
+<pre><code class='language-powershell' lang='powershell'>cd bin
+jar -cvfm &quot;../build/app.jar&quot; &quot;../manifest.mf&quot; &quot;cerberus5725/whatever/Application.class&quot;
+</code></pre>
+<p><code>cd</code> is used for moving to a different directory. In this case, the terminal moves from the project directory to the <code>bin</code> directory.</p>
+<p><code>-cvfm</code> each letter is a different argument.</p>
+<p><code>c</code> stands for <code>create</code> and means create a new jar file.</p>
+<p><code>v</code> stands for <code>verbose</code> and means print a detailed debug log when creating the jar file.</p>
+<p><code>f</code> stands for <code>file name</code> and refers to the location to create the jar. In this case, this is set to the first argument: <code>“../build/app.jar”</code>.</p>
+<p><code>m</code> stands for <code>manifest</code> and will create add a <code>manifest.mf</code> file to the jar. This file gives details about the program. This is what the current <code>manifest.mf</code> looks like:</p>
+<pre><code>Manifest-Version: 1.0
+Created-By: 1.7.0_06 (Oracle Corporation)
+Class-Path: bin
+Main-Class: cerberus5725.whatever.Application
+</code></pre>
+<p>Finally, <code>&quot;cerberus5725/whatever/Application.class&quot;</code> refers to the location of each <code>.class</code> file. Currently, there is only one.</p>
+<p>This method however, has a major drawback.</p>
+<p>The command <strong>has to be done in the bin file</strong> or else the jar directory will be</p>
+<pre><code class='language-powershell' lang='powershell'>bin\cerberus5725\whatever\Application.class
+</code></pre>
+<p>instead of</p>
+<pre><code class='language-powershell' lang='powershell'>cerberus5725\whatever\Application.class
+</code></pre>
+<p>which means that <code>Application</code> is now stored in the package <code>bin.cerberus5725.whatever</code> which is going to throw errors.</p>
+<p>&nbsp;</p>
+<p>This pretty much prevents adding libraries to the jar file entirely. The second method avoids this by splitting the command into two:</p>
+<pre><code class='language-powershell' lang='powershell'>jar -cvfm &quot;build/app.jar&quot; &quot;manifest.mf&quot;
+cd bin
+jar -uf &quot;../build/app.jar&quot; &quot;cerberus5725/whatever/Application.class&quot;
+</code></pre>
+<p>The first command follows the same idea as method 1 but without including any <code>.class</code> files.</p>
+<p>Next, the terminal switches to the <code>bin</code> directory and adds <code>Application.jar</code> using <code>jar -uf ...</code></p>
+<p><code>u</code> stands for <code>updates</code> and can be used instead of <code>c</code> in order to add to the <code>.jar</code> without re-creating it.</p>
+<p><code>f</code> again is a path to the <code>.jar</code> but this time with the added <code>../</code> meaning going from <code>workspace/bin</code>/ to <code>workspace/</code>.</p>
+<p>Finally, <code>&quot;cerberus5725/whatever/Application.class&quot;</code> is the file getting added.</p>
+<p>&nbsp;</p>
+<h3>2.5 Executing the Application</h3>
+<p>To execute the jar file, simply type in the <code>workspace</code>:</p>
+<pre><code class='language-powershell' lang='powershell'>java -jar build/app.jar
+</code></pre>
+<p>output:</p>
+<pre><code>Hello World!
+</code></pre>
+<p>To avoid repeating these steps each time a change is made in the code, scripts for building and running the program is generally a good idea.</p>
+<p><code>build.bat</code></p>
+<pre><code class='language-powershell' lang='powershell'>@echo off
+
+javac -d bin src/cerberus5725/whatever/*.java
+
+jar -cfm build/app.jar manifest.mf
+cd bin
+jar -uf ../build/app.jar cerberus5725/whatever/*.class
+cd..
+</code></pre>
+<p>A little trick to select all files in a directory is to use the wildcard (*).</p>
+<p><code>run.bat</code></p>
+<pre><code class='language-powershell' lang='powershell'>@echo off
+
+call build.bat
+java -jar build/app.jar
+</code></pre>
+<p>&nbsp;</p>
+<p>Once those two files are created, do:</p>
+<pre><code class='language-powershell' lang='powershell'>./run.bat
+</code></pre>
+<p>And the program should both compile and run.</p>
+<p>&nbsp;</p>
+<h2>3. Java Syntax</h2>
+<p><a href='https://en.wikipedia.org/wiki/Syntax'>Syntax</a> is the equivalent of punctuation in English. Things like a capital for names and beginning of sentences, commas to separate lists, etc. The syntax doesn&#39;t add any functionality by itself but it gives both the programmer and computer and easy way to read the language.</p>
+<p>&nbsp;</p>
+<p>There is a lot more syntax rules than just the ones listed but they are either too advanced for this guide or will be discussed in later sections.</p>
+<p>&nbsp;</p>
+<h3>3.1 Semicolon</h3>
+<p>Semicolons (;) are essential in Java. They are usually put at the end of a line, signifying the end of one command and the start of another.</p>
+<p>Take this pseudocode for example:</p>
+<pre><code class='language-pseudocode' lang='pseudocode'>set robot speed to 100;
+rotate robot 90 degrees right;
+send the message &quot;hello&quot; to the robot;
+</code></pre>
+<p>The code itself is gibberish but notice how each command given is separated by a semicolon. Why is this important? To help answer this, here is the same 3 commands but without any new lines:</p>
+<pre><code class='language-pseudocode' lang='pseudocode'>set robot speed to 100;rotate robot 90 degrees right;send the message &quot;hello&quot; to the robot;
+</code></pre>
+<p>Even though there is no line separation, each command can still be read out individually. This is what the computer uses when looking for the next “command”.</p>
+<p>&nbsp;</p>
+<h3>3.2 Period</h3>
+<p>The period (.) is used as a way to point to an item within a group. A more comprehensive way of thinking of a period in Java is to think of them as backslashes in directories.</p>
+<p>As an example, take a file called <code>important_notes.txt</code>. This file is stored in a folder called <code>notes</code>. The notes folder is then stored in a folder in the <code>C:\</code> drive called <code>work</code>. The final directory would be:</p>
+<pre><code>C:\work\notes\important_notes.txt
+</code></pre>
+<p>When storing an item in Java, it is pretty much the exact same except with periods.</p>
+<pre><code class='language-java' lang='java'>work.notes.important_notes
+</code></pre>
+<p>Note that this is exactly how packages work. In this example, the package would be <code>work.notes</code> and the <code>.java</code> file would be <code>important_notes</code>.</p>
+<p>&nbsp;</p>
+<h3>3.3 Spacing</h3>
+<p>Spacing in the English language is used to separate words apart from one another. In Java, spacing is used in much the same way. When naming things in Java, it is important to have no spacing in the name. If there is, the compiler will see that as two separate items instead of one.</p>
+<p>Note how in the previous <a href='#32-period'>3.2 Period</a> examples, an underscore (_) is used between <code>important</code> and <code>notes</code>.</p>
+<p>This would be valid Java.</p>
+<pre><code>important_notes
+</code></pre>
+<p>And this is invalid Java</p>
+<pre><code>important notes
+</code></pre>
+<p>&nbsp;</p>
+<h3>3.4   Round Brackets</h3>
+<p>Round Brackets or parentheses (<code>(</code> ) are used for grouping one or more augments together. Think about math functions:</p>
+<div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n219" cid="n219" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-1-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.413ex" height="2.757ex" viewBox="0 -840.1 1900 1187.2" role="img" focusable="false" style="vertical-align: -0.806ex; max-width: 100%;"><defs><path stroke-width="0" id="E1-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E1-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E1-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E1-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMATHI-66" x="0" y="0"></use><use xlink:href="#E1-MJMAIN-28" x="550" y="0"></use><use xlink:href="#E1-MJMATHI-78" x="939" y="0"></use><use xlink:href="#E1-MJMAIN-29" x="1511" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-1">f(x)</script></div></div>
+<p>The parentheses around <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.329ex" height="1.347ex" viewBox="0 -489.4 572 580" role="img" focusable="false" style="vertical-align: -0.21ex;"><defs><path stroke-width="0" id="E7-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-78" x="0" y="0"></use></g></svg></span><script type="math/tex">x</script> mean that <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.329ex" height="1.347ex" viewBox="0 -489.4 572 580" role="img" focusable="false" style="vertical-align: -0.21ex;"><defs><path stroke-width="0" id="E7-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-78" x="0" y="0"></use></g></svg></span><script type="math/tex">x</script> is the argument. If the function had more than one argument, it would look something like this:</p>
+<div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n221" cid="n221" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-2-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.931ex" height="2.757ex" viewBox="0 -840.1 3845.3 1187.2" role="img" focusable="false" style="vertical-align: -0.806ex; max-width: 100%;"><defs><path stroke-width="0" id="E10-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E10-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E10-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E10-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E10-MJMATHI-68" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path><path stroke-width="0" id="E10-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path stroke-width="0" id="E10-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E10-MJMATHI-66" x="0" y="0"></use><use xlink:href="#E10-MJMAIN-28" x="550" y="0"></use><use xlink:href="#E10-MJMATHI-78" x="939" y="0"></use><use xlink:href="#E10-MJMAIN-2C" x="1511" y="0"></use><use xlink:href="#E10-MJMATHI-68" x="1955" y="0"></use><use xlink:href="#E10-MJMAIN-2C" x="2531" y="0"></use><use xlink:href="#E10-MJMATHI-67" x="2976" y="0"></use><use xlink:href="#E10-MJMAIN-29" x="3456" y="0"></use></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-2">f(x,h,g)</script></div></div>
+<p>This is a math function named <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.277ex" height="2.376ex" viewBox="0 -755.3 550 1023.2" role="img" focusable="false" style="vertical-align: -0.622ex;"><defs><path stroke-width="0" id="E6-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-66" x="0" y="0"></use></g></svg></span><script type="math/tex">f</script> with three arguments: <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.329ex" height="1.347ex" viewBox="0 -489.4 572 580" role="img" focusable="false" style="vertical-align: -0.21ex;"><defs><path stroke-width="0" id="E7-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-78" x="0" y="0"></use></g></svg></span><script type="math/tex">x</script>, <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.338ex" height="1.965ex" viewBox="0 -755.3 576 845.9" role="img" focusable="false" style="vertical-align: -0.21ex;"><defs><path stroke-width="0" id="E8-MJMATHI-68" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-68" x="0" y="0"></use></g></svg></span><script type="math/tex">h</script>, and <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.115ex" height="1.759ex" viewBox="0 -489.4 480 757.3" role="img" focusable="false" style="vertical-align: -0.622ex;"><defs><path stroke-width="0" id="E9-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E9-MJMATHI-67" x="0" y="0"></use></g></svg></span><script type="math/tex">g</script>. Note that each argument is seperated by a comma (,).</p>
+<p>&nbsp;</p>
+<h3>3.5 Curly Brackets</h3>
+<p>Curly Brackets or braces (<code>{</code> ) are used for grouping a set of commands into one. They are used much like <a href='#3.4 Round Brackets'>round brackets</a> with an opening and a closing. Instead of using commas to separate the contents, semicolons are used instead.</p>
+<pre><code class='language-java' lang='java'>{
+    someCommand;
+    someOtherCommand;
+}
+</code></pre>
+<p>This is in no way proper code but the point is that a group is made by using and opening brace (<code>{</code> ), followed by the whatever commands are in the group, and a closing brace (<code>}</code> ) to end the group.</p>
+<p>A group can also be named like so:</p>
+<pre><code class='language-java' lang='java'>groupWithName {
+    someCommand;
+    someOtherCommand;
+}
+</code></pre>
+<p>The name in this case being <code>groupWithName</code>. Another thing some groups have are arguments. This can be shown as such:</p>
+<pre><code class='language-java' lang='java'>groupWithName(x) {
+    someCommand;
+    someOtherCommand;
+}
+</code></pre>
+<p>The group <code>groupWithName</code> has an argument of <code>x</code> as noted with the <a href='#3.4 Round Brackets'>round brackets</a>. If this is a little hard to digest, here is a comparison with math functions.</p>
+<p><code>Math function</code></p>
+<div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n234" cid="n234" mdtype="math_block"><div class="md-rawblock-container md-math-container" tabindex="-1"><div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-3-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14.001ex" height="2.757ex" viewBox="0 -840.1 6028 1187.2" role="img" focusable="false" style="vertical-align: -0.806ex; max-width: 100%;"><defs><path stroke-width="0" id="E11-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E11-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E11-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E11-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E11-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E11-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E11-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E11-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E11-MJMATHI-66" x="0" y="0"></use><use xlink:href="#E11-MJMAIN-28" x="550" y="0"></use><use xlink:href="#E11-MJMATHI-78" x="939" y="0"></use><use xlink:href="#E11-MJMAIN-29" x="1511" y="0"></use><use xlink:href="#E11-MJMAIN-3D" x="2177" y="0"></use><use xlink:href="#E11-MJMATHI-78" x="3233" y="0"></use><use xlink:href="#E11-MJMAIN-2B" x="4027" y="0"></use><g transform="translate(5028,0)"><use xlink:href="#E11-MJMAIN-31"></use><use xlink:href="#E11-MJMAIN-30" x="500" y="0"></use></g></g></svg></span></div><script type="math/tex; mode=display" id="MathJax-Element-3">f(x) = x + 10</script></div></div>
+<p><a href='https://en.wikipedia.org/wiki/Pseudocode'><code>Pseudocode</code></a></p>
+<pre><code class='language-java' lang='java'>f(x) {
+    x + 10;
+}
+</code></pre>
+</body>
+</html>
