@@ -11,6 +11,8 @@ import java.io.IOException;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.communication.RobotServer;
+import frc.robot.statemachine.StateMachine;
+import frc.robot.statemachine.TestState;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,7 +24,6 @@ import frc.robot.communication.RobotServer;
 public class Robot extends TimedRobot {
 
 	private RobotServer server;
-	private Thread serverThread;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -32,19 +33,26 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		System.out.println("Robot has been initialized.");
 
-		server = new RobotServer("127.0.0.1", 300);
-		server.connect();
+		// server = new RobotServer("127.0.0.1", 300);
+		// server.connect();
 
-		// serverThread = new Thread(server);
-		// serverThread.start();
+		// System.out.println(server.read());
+		// server.write("*Some random server data.");
 
-		System.out.println(server.read());
-		server.write("*Some random server data.");
+		// StateMachine states = new StateMachine();
+		
+		// states.getStates().add(new TestState(10));
+		// states.getStates().add(new TestState(10));
+		// states.getStates().add(new TestState(10));
+		// states.getStates().add(new TestState(10));
+
+		// states.printStates();
 
 	}
 
 	@Override
 	public void robotPeriodic() {
+		System.out.println("Initialized periodic.");
 	}
 
 	@Override
