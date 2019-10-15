@@ -6,11 +6,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RobotConnectionManager implements Runnable {
+public class RobotConnections implements Runnable {
     private ServerSocket server;
     private List<Socket> clients = new ArrayList<Socket>();
 
-    public RobotConnectionManager(ServerSocket server) {
+    public RobotConnections(ServerSocket server) {
         this.server = server;
     }
 

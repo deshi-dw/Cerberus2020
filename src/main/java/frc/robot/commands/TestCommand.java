@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 public class TestCommand implements Command {
 	private int count = 0;
+	private boolean isFinished = false;
 
 	public TestCommand(int initialCount) {
 		count = initialCount;
@@ -10,6 +11,7 @@ public class TestCommand implements Command {
 	@Override
 	public void run() {
 		count += 100;
+		isFinished = true;
 	}
 
 	@Override
@@ -20,6 +22,11 @@ public class TestCommand implements Command {
 	@Override
 	public int getLength() {
 		return 4;
+	}
+
+	@Override
+	public boolean getIsFinished() {
+		return isFinished;
 	}
 
 	@Override
