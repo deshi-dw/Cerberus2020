@@ -39,20 +39,26 @@ public class Robot extends TimedRobot {
 		// System.out.println(server.read());
 		// server.write("*Some random server data.");
 
-		// StateMachine states = new StateMachine();
-		
-		// states.getStates().add(new TestState(10));
-		// states.getStates().add(new TestState(10));
-		// states.getStates().add(new TestState(10));
-		// states.getStates().add(new TestState(10));
+		StateMachine states = new StateMachine();
 
-		// states.printStates();
+		states.add(new TestState(10));
+		states.add(new TestState(10));
+		states.add(new TestState(10));
+		states.add(new TestState(10));
+		states.add(new TestState(10));
+		states.add(new TestState(10));
 
+		states.connect(0, 1);
+		states.connect(1, 2);
+		states.connect(2, 3);
+		states.connect(2, 4);
+		states.connect(2, 5);
+
+		states.printStatesAndConnections();
 	}
 
 	@Override
 	public void robotPeriodic() {
-		System.out.println("Initialized periodic.");
 	}
 
 	@Override
@@ -84,6 +90,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledInit() {
+		System.out.println("Disabled code has been initialized.");
 	}
 
 	@Override
