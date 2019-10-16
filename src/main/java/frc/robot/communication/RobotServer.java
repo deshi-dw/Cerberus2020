@@ -83,7 +83,6 @@ public class RobotServer implements Runnable {
 			server.close();
 			client.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
