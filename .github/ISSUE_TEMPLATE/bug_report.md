@@ -3,7 +3,7 @@ name: Bug report
 about: A report on a bug that is in the code. This is reserved for a bug without an
   imediate fix.
 title: ''
-labels: bug
+labels: ''
 assignees: ''
 
 ---
