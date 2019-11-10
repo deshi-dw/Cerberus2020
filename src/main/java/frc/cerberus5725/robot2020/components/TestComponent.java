@@ -1,4 +1,4 @@
-package frc.cerberus5725.robot2020;
+package frc.cerberus5725.robot2020.components;
 
 import frc.cerberus5725.components.ComponentInfo;
 import frc.cerberus5725.components.IComponent;

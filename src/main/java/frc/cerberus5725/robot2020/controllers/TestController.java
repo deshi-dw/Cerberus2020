@@ -1,6 +1,7 @@
-package frc.cerberus5725.robot2020;
+package frc.cerberus5725.robot2020.controllers;
 
 import frc.cerberus5725.components.controllers.IController;
+import frc.cerberus5725.robot2020.components.TestComponent;
 import frc.cerberus5725.settings.Settings;
 
 public class TestController implements IController {

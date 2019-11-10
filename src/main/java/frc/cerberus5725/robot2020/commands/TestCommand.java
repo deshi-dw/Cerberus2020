@@ -1,4 +1,4 @@
-package frc.cerberus5725.robot2020;
+package frc.cerberus5725.robot2020.commands;
 
 import frc.cerberus5725.commands.Command;
 
