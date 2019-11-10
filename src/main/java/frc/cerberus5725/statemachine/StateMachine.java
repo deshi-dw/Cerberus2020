@@ -4,12 +4,12 @@ import java.util.HashMap;
 
 public class StateMachine implements Runnable {
 	private HashMap<State, Transition> transitions;
-	private State currentState;
+	private State current;
+	private boolean hasEnteredRun = false;
 
 	public StateMachine(State initialState) {
 		transitions = new HashMap<State, Transition>();
-
-		currentState = initialState;
+		current = initialState;
 	}
 
 	public void add(Transition transition) {
@@ -26,8 +26,18 @@ public class StateMachine implements Runnable {
 
 	@Override
 	public void run() {
+		if(hasEnteredRun == false) {
+			current.enter();
+			hasEnteredRun = true;
+		}
 
-
-		currentState.run();
+		if(transitions.get(current).condition.isTrue()) {
+			current.exit();
+			current = transitions.get(current).next;
+			hasEnteredRun = false;
+		}
+		else {
+			current.run();
+		}
 	}
 }
