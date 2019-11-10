@@ -7,12 +7,8 @@
 
 package frc.robot;
 
-import java.io.IOException;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.communication.RobotServer;
-import frc.robot.statemachine.StateMachine;
-import frc.robot.statemachine.TestState;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,28 +29,22 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		System.out.println("Robot has been initialized.");
 
-		// server = new RobotServer("127.0.0.1", 300);
-		// server.connect();
+		// StateMachine states = new StateMachine();
 
-		// System.out.println(server.read());
-		// server.write("*Some random server data.");
+		// states.add(new TestState(10));
+		// states.add(new TestState(10));
+		// states.add(new TestState(10));
+		// states.add(new TestState(10));
+		// states.add(new TestState(10));
+		// states.add(new TestState(10));
 
-		StateMachine states = new StateMachine();
+		// states.connect(0, 1);
+		// states.connect(1, 2);
+		// states.connect(2, 3);
+		// states.connect(2, 4);
+		// states.connect(2, 5);
 
-		states.add(new TestState(10));
-		states.add(new TestState(10));
-		states.add(new TestState(10));
-		states.add(new TestState(10));
-		states.add(new TestState(10));
-		states.add(new TestState(10));
-
-		states.connect(0, 1);
-		states.connect(1, 2);
-		states.connect(2, 3);
-		states.connect(2, 4);
-		states.connect(2, 5);
-
-		states.printStatesAndConnections();
+		// states.printStatesAndConnections();
 	}
 
 	@Override
@@ -82,6 +72,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testInit() {
 		System.out.println("Test code has been initialized.");
+
+		// Port must be between 5800 and 5810. Other ports are firewalled.
+		// server = new RobotServer("172.22.11.2", 5809);
+		server = new RobotServer("169.254.76.187", 5809);
+		server.connect();
+
+		System.out.println(server.read());
+		server.write("SERVER DATA SENT FROM ROBORIO");
 	}
 
 	@Override
